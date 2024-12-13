@@ -4,10 +4,12 @@ const resultText = document.getElementById('result')
 
 function checkInput(){
     const input = textInput.value
-    if(isPalindrome(input)){
-        resultText.innerText = `${input} is a palindrome`
-    }else if (input === ''){
+    if (input === ''){
         resultText.innerText = "Please input a value"
+    }else if(isPalindrome(input)){
+        resultText.innerText = `${input} is a palindrome`
+    }else{
+        resultText.innerText = `${input} is not a palindrome`
     }
 }
 
