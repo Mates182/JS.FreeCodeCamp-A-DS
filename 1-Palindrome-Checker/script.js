@@ -6,6 +6,7 @@ function checkInput(){
     const input = textInput.value
     if (input === ''){
         resultText.innerText = "Please input a value"
+        alert("Please input a value")
     }else if(isPalindrome(input)){
         resultText.innerText = `${input} is a palindrome`
     }else{
@@ -15,11 +16,19 @@ function checkInput(){
 
 function isPalindrome(str){
     str = str.toLowerCase()
-    let tempStr = ''
-    for(let i = str.length-1; i >= 0; i--){
-        tempStr += str[i]
+    const formatedStr = ''
+    const regex = /[a-z]|\d/
+    for(const char of str){
+        if(char.match(regex)){
+            formatedStr+=char
+        }
     }
-    return str === tempStr
+
+    let tempStr = ''
+    for(let i = formatedStr.length-1; i >= 0; i--){
+        tempStr += formatedStr[i]
+    }
+    return formatedStr === tempStr
 }
 
 checkButton.addEventListener('click', checkInput)
