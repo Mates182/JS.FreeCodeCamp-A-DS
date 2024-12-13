@@ -7,16 +7,14 @@ function checkInput(){
     if (input === ''){
         resultText.innerText = "Please input a value"
         alert("Please input a value")
-    }else if(isPalindrome(input)){
-        resultText.innerText = `${input} is a palindrome`
     }else{
-        resultText.innerText = `${input} is not a palindrome`
+        resultText.innerText = `${input} is ${isPalindrome(input)?'': 'not'} a palindrome`
     }
 }
 
 function isPalindrome(str){
     str = str.toLowerCase()
-    const formatedStr = ''
+    let formatedStr = ''
     const regex = /[a-z]|\d/
     for(const char of str){
         if(char.match(regex)){
