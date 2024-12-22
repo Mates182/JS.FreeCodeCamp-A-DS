@@ -21,13 +21,14 @@ checkBtn.addEventListener('click', e => {
     else{
         const result = document.createElement('div')
         if(validatePhoneNum(inputValue)){
-            result.className = 'result-valid'
+            result.className = 'result valid'
             result.innerText = `Valid US number: ${inputValue}`
         }else{
-            result.className = 'result-invalid'
+            result.className = 'result invalid'
             result.innerText = `Invalid US number: ${inputValue}`
         }
         results.appendChild(result)
+        results.scrollTop = results.scrollHeight
     }
 
     input.value = ''

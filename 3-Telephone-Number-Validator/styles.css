@@ -85,6 +85,8 @@ label {
     margin-bottom: auto;
     font-size: 1rem;
     color: #333;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 .phone-buttons {
@@ -128,4 +130,16 @@ button:hover {
     border-radius: 3px;
     position: absolute;
     bottom: 10px;
+}
+
+.result{
+    margin: 10px 0;
+}
+
+.valid{
+    color: green;
+}
+
+.invalid{
+    color: red;
 }
