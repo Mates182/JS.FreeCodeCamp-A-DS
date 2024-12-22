@@ -11,19 +11,18 @@ const phoneRegexList = [
 
 const validatePhoneNum = phoneNum => phoneRegexList.some(regex => regex.test(phoneNum))
 
-
-checkBtn.addEventListener('click', e => {
-    e.preventDefault()
+const checkImputHandler = event => {
+    event.preventDefault()
     const inputValue = input.value
     if (inputValue === '') {
         alert('Please provide a phone number')
     }
-    else{
+    else {
         const result = document.createElement('div')
-        if(validatePhoneNum(inputValue)){
+        if (validatePhoneNum(inputValue)) {
             result.className = 'result valid'
             result.innerText = `Valid US number: ${inputValue}`
-        }else{
+        } else {
             result.className = 'result invalid'
             result.innerText = `Invalid US number: ${inputValue}`
         }
@@ -32,6 +31,16 @@ checkBtn.addEventListener('click', e => {
     }
 
     input.value = ''
+}
+
+checkBtn.addEventListener('click', e => {
+    checkImputHandler(e)
+})
+
+input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+        checkImputHandler(e)
+    }
 })
 
 clearBtn.addEventListener('click', e => {
