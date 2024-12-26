@@ -12,6 +12,7 @@ const specialDefenseTxt = document.getElementById('special-defense')
 const speedTxt = document.getElementById('speed')
 const typesDiv = document.getElementById('types')
 const pokeImage = document.getElementById('poke-image')
+const statBars = document.querySelectorAll('.stat-bar-fill')
 
 const pokeEndpoint = 'https://pokeapi-proxy.freecodecamp.rocks/api/pokemon'
 
@@ -20,6 +21,9 @@ const getPokemon = async (idOrName) => {
         clearData()
         const response = await fetch(`${pokeEndpoint}/${idOrName.toLowerCase()}`)
         if (!response.ok) {
+            statBars.forEach(statBar => {
+                statBar.style.width = '0%'
+            })
             throw new Error('Pokémon not found')
         }
         const pokeData = await response.json()
@@ -41,6 +45,9 @@ const getPokemon = async (idOrName) => {
 
     } catch (error) {
         alert(error.message)
+        statBars.forEach(statBar => {
+            statBar.style.width = '0%'
+        })
     }
 
 }
@@ -58,6 +65,12 @@ const setPokemonData = (pokemon) => {
     specialDefenseTxt.textContent = pokemon.stats.spDefense
     speedTxt.textContent = pokemon.stats.speed
     typesDiv.innerHTML = ''
+    let i = 0
+    Object.entries(pokemon.stats).forEach(([key, value]) => {
+        statBars[i].style.width = (parseFloat(value) / 180 * 100) + '%'
+        i++
+    });
+
     pokemon.types.forEach(type => {
         typesDiv.innerHTML += `<p class="type-${type}">${type.toUpperCase()}</p>`
     })
@@ -103,4 +116,12 @@ searchBtn.addEventListener('click', (e) => {
     const pokemonIdOrName = searchInput.value
     getPokemon(pokemonIdOrName)
 
+})
+
+searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+        e.preventDefault()
+        const pokemonIdOrName = searchInput.value
+        getPokemon(pokemonIdOrName)
+    }
 })

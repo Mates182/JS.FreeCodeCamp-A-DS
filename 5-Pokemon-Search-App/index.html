@@ -16,9 +16,15 @@
                 <div class="poke-image">
                     <div id="poke-image"></div>
                 </div>
+                <div class="poke-image-bottom">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
                 <div class="poke-data">
-                    <h3 id="pokemon-name"></h3>
-                    <h3 id="pokemon-id"></h3>
+                    <div class="name-and-id">
+                        <h3><span id="pokemon-name"></span> <span id="pokemon-id"></span></h3>
+
+                    </div>
                     <p id="weight"></p>
                     <p id="height"></p>
                     <div id="types"></div>
@@ -34,30 +40,61 @@
                     <table>
                         <tr>
                             <th>Base</th>
+                            <th></th>
                             <th>Stats</th>
                         </tr>
                         <tr>
                             <td>HP:</td>
+                            <td>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-fill" style="width: 10%;" id="hp-stat-bar"></div>
+                                </div>
+                            </td>
                             <td id="hp"></td>
                         </tr>
                         <tr>
                             <td>Attack:</td>
+                            <td>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-fill" style="width: 10%;" id="attack-stat-bar"></div>
+                                </div>
+                            </td>
                             <td id="attack"></td>
                         </tr>
                         <tr>
                             <td>Defense:</td>
+                            <td>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-fill" style="width: 10%;" id="defense-stat-bar"></div>
+                                </div>
+                            </td>
                             <td id="defense"></td>
                         </tr>
                         <tr>
                             <td>Sp. Attack:</td>
+                            <td>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-fill" style="width: 10%;" id="sp-attack-stat-bar"></div>
+                                </div>
+                            </td>
                             <td id="special-attack"></td>
                         </tr>
                         <tr>
                             <td>Sp. Defense:</td>
+                            <td>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-fill" style="width: 10%;" id="sp-defense-stat-bar"></div>
+                                </div>
+                            </td>
                             <td id="special-defense"></td>
                         </tr>
                         <tr>
                             <td>Speed:</td>
+                            <td>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-fill" style="width: 10%;" id="speed-stat-bar"></div>
+                                </div>
+                            </td>
                             <td id="speed"></td>
                         </tr>
                     </table>
@@ -66,6 +103,7 @@
 
             </section>
         </div>
+
     </main>
     <script src="./script.js"></script>
 </body>
