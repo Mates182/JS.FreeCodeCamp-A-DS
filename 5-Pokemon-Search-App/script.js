@@ -1,10 +1,26 @@
+const searchInput = document.getElementById('search-input')
+const searchBtn = document.getElementById('search-button')
+const pokemonName = document.getElementById('pokemon-name')
+const pokemonId = document.getElementById('pokemon-id')
+const weightTxt = document.getElementById('weight')
+const heightTxt = document.getElementById('height')
+const hpTxt = document.getElementById('hp')
+const attackTxt = document.getElementById('attack')
+const defenseTxt = document.getElementById('defense')
+const specialAttackTxt = document.getElementById('special-attack')
+const specialDefenseTxt = document.getElementById('special-defense')
+const speedTxt = document.getElementById('speed')
+const typesDiv = document.getElementById('types')
+const pokeImage = document.getElementById('poke-image')
+
 const pokeEndpoint = 'https://pokeapi-proxy.freecodecamp.rocks/api/pokemon'
 
 const getPokemon = async (idOrName) => {
     try {
-        const response = await fetch(`${pokeEndpoint}/${idOrName}`)
+        clearData()
+        const response = await fetch(`${pokeEndpoint}/${idOrName.toLowerCase()}`)
         if (!response.ok) {
-            throw new Error(`Error: Pokémon ${idOrName} no encontrado.`);
+            throw new Error('Pokémon not found')
         }
         const pokeData = await response.json()
         const {
@@ -12,22 +28,55 @@ const getPokemon = async (idOrName) => {
             name,
             height,
             weight,
-            sprites: { front_default},
+            sprites: { front_default },
             stats,
             types
         } = pokeData
 
-        const statsValues = stats.map(({base_stat}) => base_stat)
-        const typesData = types.map(({type: {name}}) => name)
+        const statsValues = stats.map(({ base_stat }) => base_stat)
+        const typesData = types.map(({ type: { name } }) => name)
 
-        pokemon = new Pokemon(id, name, height, weight, front_default, statsValues, typesData)
-        console.log(pokemon)
+        const pokemon = new Pokemon(id, name.toUpperCase(), height, weight, front_default, statsValues, typesData)
+        setPokemonData(pokemon)
 
-        
     } catch (error) {
-        console.log(error)
+        alert(error.message)
     }
-    
+
+}
+
+const setPokemonData = (pokemon) => {
+    pokeImage.innerHTML = `<img src="${pokemon.spriteUrl}" alt="${pokemon.name} Sprite" id="sprite">`
+    pokemonName.textContent = pokemon.name
+    pokemonId.textContent = `#${pokemon.id}`
+    weightTxt.textContent = `Weight: ${pokemon.weight}`
+    heightTxt.textContent = `Height: ${pokemon.height}`
+    hpTxt.textContent = pokemon.stats.hp
+    attackTxt.textContent = pokemon.stats.attack
+    defenseTxt.textContent = pokemon.stats.defense
+    specialAttackTxt.textContent = pokemon.stats.spAttack
+    specialDefenseTxt.textContent = pokemon.stats.spDefense
+    speedTxt.textContent = pokemon.stats.speed
+    typesDiv.innerHTML = ''
+    pokemon.types.forEach(type => {
+        typesDiv.innerHTML += `<p class="type-${type}">${type.toUpperCase()}</p>`
+    })
+
+}
+
+const clearData = () => {
+    pokeImage.innerHTML = ''
+    pokemonName.textContent = ''
+    pokemonId.textContent = ''
+    weightTxt.textContent = ''
+    heightTxt.textContent = ''
+    hpTxt.textContent = ''
+    attackTxt.textContent = ''
+    defenseTxt.textContent = ''
+    specialAttackTxt.textContent = ''
+    specialDefenseTxt.textContent = ''
+    speedTxt.textContent = ''
+    typesDiv.innerHTML = ''
 }
 
 class Pokemon {
@@ -49,5 +98,9 @@ class Pokemon {
     }
 }
 
-getPokemon('1')
-getPokemon('eternatus')
+searchBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    const pokemonIdOrName = searchInput.value
+    getPokemon(pokemonIdOrName)
+
+})
