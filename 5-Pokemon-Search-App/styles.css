@@ -1,0 +1,334 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1b1b32;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+main {
+    max-width: 1200px;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* Pokedex Wrapper */
+.pokedex {
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+    height: 450px;
+    border: 8px solid #d32f2f;
+    border-radius: 10px;
+    background-color: #ef5350;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* Left Part of Pokedex */
+.left-part {
+    flex: 1;
+    background-color: #f44336;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 5px solid #d32f2f;
+}
+
+.name-and-id {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Pokémon Image */
+.poke-image {
+    width: 90%;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.poke-image-bottom {
+    height: 30px;
+    background-color: #fff;
+    width: 90%;
+    margin-bottom: 20px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+    border-radius: 0 0 10px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle {
+    background-color: #e91212;
+    height: 16px;
+    width: 16px;
+    border-radius: 8px;
+    margin: 0 6px;
+}
+
+#poke-image {
+    width: 85%;
+    height: 150px;
+    margin-top: 15px;
+    background-color: #b7d3eb;
+    border-radius: 5px;
+}
+
+#sprite {
+    display: block;
+    margin: 0 auto;
+    height: 150px;
+}
+
+/* Pokémon Data */
+.poke-data {
+    text-align: center;
+    color: #000;
+    background-color: #ffffff;
+    border: 3px solid #d32f2f;
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.poke-data h3 {
+    font-size: 1.2rem;
+    margin: 10px auto;
+}
+
+.poke-data p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+#types {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#types p {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow:
+        1px 1px 0px rgba(0, 0, 0, 0.7),
+        -1px -1px 0px rgba(0, 0, 0, 0.7),
+        1px -1px 0px rgba(0, 0, 0, 0.7),
+        -1px 1px 0px rgba(0, 0, 0, 0.7);
+}
+
+.type-normal {
+    background-color: #A8A77A;
+}
+
+.type-fire {
+    background-color: #EE8130;
+}
+
+.type-water {
+    background-color: #6390F0;
+}
+
+.type-electric {
+    background-color: #F7D02C;
+}
+
+.type-grass {
+    background-color: #27ee41;
+}
+
+.type-ice {
+    background-color: #96D9D6;
+}
+
+.type-fighting {
+    background-color: #C22E28;
+}
+
+.type-poison {
+    background-color: #A33EA1;
+}
+
+.type-ground {
+    background-color: #E2BF65;
+}
+
+.type-flying {
+    background-color: #A98FF3;
+}
+
+.type-psychic {
+    background-color: #F95587;
+}
+
+.type-bug {
+    background-color: #A6B91A;
+}
+
+.type-rock {
+    background-color: #B6A136;
+}
+
+.type-ghost {
+    background-color: #735797;
+}
+
+.type-dragon {
+    background-color: #6F35FC;
+}
+
+.type-dark {
+    background-color: #705746;
+}
+
+.type-steel {
+    background-color: #B7B7CE;
+}
+
+.type-fairy {
+    background-color: #D685AD;
+}
+
+
+/* Right Part of Pokedex */
+.right-part {
+    flex: 1.5;
+    background-color: #ff7043;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Searcher */
+.searcher {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+input {
+    width: calc(100% - 100px);
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #d32f2f;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #c62828;
+}
+
+/* Stats Table */
+.stats {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+    font-size: 1rem;
+    color: #333;
+}
+
+th {
+    background-color: #f44336;
+    color: #fff;
+}
+
+td:nth-child(2) {
+    text-align: right;
+}
+
+tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.stat-bar {
+    width: 150px;
+    height: 20px;
+    background-color: #e0e0e0;
+    border: 2px solid #000;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+#hp-stat-bar {
+    background-color: #59cb38;
+}
+
+#attack-stat-bar {
+    background-color: #f1323d;
+}
+
+#defense-stat-bar {
+    background-color: #ff7800;
+}
+
+#sp-attack-stat-bar {
+    background-color: #ff4788;
+}
+
+#sp-defense-stat-bar {
+    background-color: #ffce00;
+}
+
+#speed-stat-bar {
+    background-color: #5c91f7;
+}
